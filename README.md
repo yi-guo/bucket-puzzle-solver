@@ -14,12 +14,12 @@ project consists of three files:
      we have 0 gallons of water in both buckets.
   2. Action.java, which defines an action to be applied to a state. In this problem, we have six
      actions available:
-        a) Fill the first bucket, in which case the state goes from (0, 0) to (x, 0)
-        b) Fill the second bucket, in which case the state goes from (x, 0) to (x, y)
-        c) Empty the first bucket, hence, (x, y) -> (0, y)
-        d) Empty the second bucket, hence, (0, y) -> (0, 0)
-        e) Pure the water from the first bucket to the second bucket
-        f) Pure the water from the second bucket to the first bucket
+      a) Fill the first bucket, in which case the state goes from (0, 0) to (x, 0)
+      b) Fill the second bucket, in which case the state goes from (x, 0) to (x, y)
+      c) Empty the first bucket, hence, (x, y) -> (0, y)
+      d) Empty the second bucket, hence, (0, y) -> (0, 0)
+      e) Pure the water from the first bucket to the second bucket
+      f) Pure the water from the second bucket to the first bucket
 
 The idea is to apply the above six actions to the initial state (0, 0), which gives us back six
 children (if we don't care about duplicates). Then we continue to apply the six actions to each
