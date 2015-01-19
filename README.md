@@ -20,6 +20,7 @@ project consists of three files:
     4. Empty the second bucket, hence, (0, y) -> (0, 0)
     5. Pure the water from the first bucket to the second bucket
     6. Pure the water from the second bucket to the first bucket
+  3. Search.java, which drives the program and performs breath-first search.
 
 The idea is to apply the above six actions to the initial state (0, 0), which gives us back six
 children (if we don't care about duplicates). Then we continue to apply the six actions to each
