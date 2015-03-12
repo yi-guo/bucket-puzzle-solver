@@ -6,18 +6,18 @@ import java.util.*;
 
 //Holds the main method to navigate the program
 public class Search {
-    
+
     // Global data field
     public static int X;    // Represents the capacity of the 1st bucket
     public static int Y;    // Represents the capacity of the 2nd bucket
     public static int Z;    // Represents the amount of water inquired
-    
+
     // Main method that navigates the whole program
     public static void main(String[] args) {
         promptInput();
         displayOutput(search());
     }
-    
+
     // Traverse, search, and return the goal state if any
     public static Stack<State> search() {
         // Contains states to be expanded
@@ -58,7 +58,7 @@ public class Search {
         // Return NULL if no solution exists
         return null;
     }
-    
+
     // Prompt the user input for the values of X, Y, and Z.
     public static void promptInput() {
         @SuppressWarnings("resource")
@@ -71,7 +71,7 @@ public class Search {
         Z = console.nextInt();
         System.out.println();
     }
-    
+
     // Display the solution if any
     public static void displayOutput(Stack<State> solution) {
         if (solution != null) {
@@ -88,7 +88,7 @@ public class Search {
             }
             System.out.println(String.format("\nTotal steps consumed: %d\n", steps));
             System.out.println("Note: This is the BEST solution!");
-        // Print out "No Solution!" otherwise
+            // Print out "No Solution!" otherwise
         } else {
             System.out.println("No Solution!");
         }
@@ -121,7 +121,7 @@ public class Search {
             emptyY(current);
         }
     }
-    
+
     // Represents an action that fills the 1st bucket
     public static void fillX(State current) {
         State child = new State(X, current.getY());     // Represents the child state when this action is applied
@@ -132,7 +132,7 @@ public class Search {
         // Create and add this action to the set of actions of the current state
         current.addAction(new Action(current, child, String.format("Fill the %d-gallon bucket", X)));
     }
-    
+
     // Represents an action that fills the 2nd bucket
     public static void fillY(State current) {
         State child = new State(current.getX(), Y);     // Represents the child state when this action is applied
@@ -143,7 +143,7 @@ public class Search {
         // Create and add this action to the set of actions of the current state
         current.addAction(new Action(current, child, String.format("Fill the %d-gallon bucket", Y)));
     }
-    
+
     // Represents an action that empties the 1st bucket
     public static void emptyX(State current) {
         State child = new State(0, current.getY());     // Represents the child state when this action is applied
@@ -154,7 +154,7 @@ public class Search {
         // Create and add this action to the set of actions of the current state
         current.addAction(new Action(current, child, String.format("Empty the %d-gallon bucket", X)));
     }
-    
+
     // Represents an action that empties the 2nd bucket
     public static void emptyY(State current) {
         State child = new State(current.getX(), 0);     // Represents the child state when this action is applied
@@ -165,7 +165,7 @@ public class Search {
         // Create and add this action to the set of actions of the current state
         current.addAction(new Action(current, child, String.format("Empty the %d-gallon bucket", Y)));
     }
-    
+
     // Represents an action that fills the 1st bucket with the water in the 2nd bucket
     public static void fillXWithY(State current) {
         State child;    // Represents the child state when this action is applied
@@ -182,7 +182,7 @@ public class Search {
         // Create and add this action to the set of actions of the current state
         current.addAction(new Action(current, child, String.format("Fill the %d-gallon bucket with the water in the %d-gallon bucket until full or the other is empty", X, Y)));
     }
-    
+
     // Represents an action that fills the 2nd bucket with the water in the 1st bucket
     public static void fillYWithX(State current) {
         State child;    // Represents the child state when this action is applied
@@ -209,5 +209,5 @@ public class Search {
         // Otherwise, define the cost of the current state as one step closer to the goal state than its parent
         return S.getParent().getFutureCost() - 1;
     }
-    
+
 }
